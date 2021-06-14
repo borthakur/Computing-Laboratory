@@ -1,0 +1,32 @@
+clear all;
+syms f(x);
+f(x)=x^3-2*x^2-5;
+lim=exp(-5);
+x0=1;
+x1=4;
+k=double(fzero(f,[1,4]));
+k
+disp("fds")
+double(x0);
+disp("fds")
+x0=0;
+x1=3.1415926;
+m=(x0+x1)/2;
+while(double(abs(f(m)))>lim)
+    if(f(x0)*f(m)>0)
+        x0=m;
+    else
+        x1=m;
+    end
+    m=(x0+x1)/2;
+end
+double(m)
+disp("fds")
+double(abs(f(x0)));
+while(double(abs(f(x0)))>lim)
+    x0;
+    temp=x0;
+    x0=x0-f(x0)*(x0-x1)/(f(x0)-f(x1));
+    x1=temp;
+end
+double(m)
